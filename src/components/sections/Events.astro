@@ -1,0 +1,24 @@
+---
+import { getCollection } from 'astro:content';
+import Card from '../ui/Card.astro';
+
+const events = (await getCollection('events'))
+  .sort((a, b) => a.data.date.valueOf() - b.data.date.valueOf())
+  .slice(0, 3);
+---
+
+<section class="mx-auto max-w-6xl px-6 py-16">
+  <div class="reveal opacity-0">
+    <h2 class="text-2xl font-bold md:text-3xl">直近のイベント</h2>
+    <div class="mt-8 grid gap-6 md:grid-cols-3">
+      {events.map((e) => (
+        <Card>
+          <p class="text-xs text-slate-500">{e.data.date.toLocaleDateString('ja-JP')}</p>
+          <h3 class="mt-1 text-lg font-semibold">{e.data.title}</h3>
+          <p class="mt-1 text-xs text-slate-500">{e.data.location}</p>
+          <p class="mt-2 text-sm text-slate-600">{e.data.description}</p>
+        </Card>
+      ))}
+    </div>
+  </div>
+</section>

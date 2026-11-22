@@ -1,0 +1,21 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/sections/Hero.astro';
+import Philosophy from '../components/sections/Philosophy.astro';
+import Activities from '../components/sections/Activities.astro';
+import Reports from '../components/sections/Reports.astro';
+import Events from '../components/sections/Events.astro';
+import Contact from '../components/sections/Contact.astro';
+import { site } from '../data/site';
+---
+
+<BaseLayout title={site.title} description={site.description}>
+  <main>
+    <Hero />
+    <Philosophy />
+    <Activities />
+    <Reports />
+    <Events />
+    <Contact />
+  </main>
+</BaseLayout>
